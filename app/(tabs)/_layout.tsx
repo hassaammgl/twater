@@ -1,11 +1,10 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs, useRouter } from "expo-router";
 import { Image, TouchableOpacity } from "react-native";
-import { Colors } from "@/constants/Colors";
-// import { useTheme } from '../../context/ThemeContext';
+import { useTheme } from "@/hooks/useTheme";
 
 export default function TabLayout() {
-  const { light:colors } = Colors;
+  const { colors } = useTheme();
   const router = useRouter();
 
   return (
@@ -32,7 +31,7 @@ export default function TabLayout() {
         },
         headerLeft: () => (
           <TouchableOpacity
-            onPress={() => router.push("/(tabs)/profile")}
+            // onPress={() => router.push("/(tabs)/profile")}
             style={{ marginLeft: 16 }}
           >
             <Image

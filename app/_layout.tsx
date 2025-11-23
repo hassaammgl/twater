@@ -25,12 +25,13 @@ export default function RootLayout() {
     <Stack>
       {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
       <Stack.Screen name="auth/welcome" options={{ headerShown: false }} />
-      {/* <Stack.Screen name="auth/login" options={{ headerShown: false }} /> */}
-      {/* <Stack.Screen name="auth/register" options={{ headerShown: false }} /> */}
-      {/* <Stack.Screen
+      <Stack.Screen name="auth/login" options={{ headerShown: false }} />
+      <Stack.Screen name="auth/register" options={{ headerShown: false }} />
+      <Stack.Screen
         name="auth/forgot-password"
         options={{ headerShown: false }}
       />
+      {/*
       <Stack.Screen
         name="compose"
         options={{ presentation: "modal", headerShown: false }}

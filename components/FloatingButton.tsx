@@ -16,7 +16,7 @@ export const FloatingButton = () => {
                 shadowRadius: 8,
                 elevation: 8,
             }}
-            onPress={() => router.push('/compose')}
+            // onPress={() => router.push('/compose')}
             activeOpacity={0.9}
         >
             <Ionicons name="add" size={32} color="white" />

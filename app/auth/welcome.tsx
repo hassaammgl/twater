@@ -22,8 +22,7 @@ export default function WelcomeScreen() {
         <View className="w-full">
           <Button
             title="Create account"
-            onPress={() => router.push("/")}
-            // onPress={() => router.push('/auth/register')}
+            onPress={() => router.push("/auth/register")}
           />
           <View className="mt-10">
             <Text className="text-sm mb-1 text-gray-500 dark:text-gray-400">
@@ -32,8 +31,7 @@ export default function WelcomeScreen() {
             <Button
               title="Log in"
               variant="outline"
-              onPress={() => router.push("/")}
-              // onPress={() => router.push('/auth/login')}
+              onPress={() => router.push("/auth/login")}
             />
           </View>
         </View>
