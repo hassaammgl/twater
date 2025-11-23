@@ -23,7 +23,7 @@ export default function RootLayout() {
 
   return (
     <Stack>
-      {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="auth/welcome" options={{ headerShown: false }} />
       <Stack.Screen name="auth/login" options={{ headerShown: false }} />
       <Stack.Screen name="auth/register" options={{ headerShown: false }} />
@@ -39,9 +39,9 @@ export default function RootLayout() {
       <Stack.Screen
         name="settings"
         options={{ title: "Settings", headerBackTitle: "Back" }}
-      />
+      /> */}
       <Stack.Screen name="profile/edit" options={{ headerShown: false }} />
-      <Stack.Screen name="chat/[id]" options={{ headerShown: false }} />
+   {/*   <Stack.Screen name="chat/[id]" options={{ headerShown: false }} />
       <Stack.Screen name="post/[id]" options={{ headerShown: false }} /> */}
       <Stack.Screen name="+not-found" />
     </Stack>

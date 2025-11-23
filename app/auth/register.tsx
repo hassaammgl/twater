@@ -1,11 +1,13 @@
 import { Button } from "@/components/Button";
 import ScreenWrapper from "@/components/ScreenWrapper";
+import { useAuth } from "@/store/auth";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  KeyboardAvoidingView,
+  ActivityIndicator,
   Alert,
+  KeyboardAvoidingView,
   Text,
   TextInput,
   TouchableOpacity,
@@ -14,16 +16,22 @@ import {
 
 export default function RegisterScreen() {
   const router = useRouter();
-  const [name, setName] = useState("");
+  const { isLoading, signup } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = () => {
-    if (name && email && password) {
-      // login();
-      router.replace("/(tabs)");
-    } else {
+  const handleRegister = async () => {
+    if (!email || !password) {
       Alert.alert("Error", "Please fill in all fields");
+      return;
+    }
+
+    await signup(email, password);
+
+    // Only redirect if user is set
+    if (useAuth.getState().user) {
+      router.replace("/(tabs)/profile");
     }
   };
 
@@ -46,15 +54,7 @@ export default function RegisterScreen() {
 
         <TextInput
           className="h-12 border border-gray-300 dark:border-gray-600 rounded px-3 text-base mb-5 text-gray-900 dark:text-white"
-          placeholder="Name"
-          placeholderTextColor="#9CA3AF"
-          value={name}
-          onChangeText={setName}
-        />
-
-        <TextInput
-          className="h-12 border border-gray-300 dark:border-gray-600 rounded px-3 text-base mb-5 text-gray-900 dark:text-white"
-          placeholder="Phone number or email address"
+          placeholder="Email address"
           placeholderTextColor="#9CA3AF"
           value={email}
           onChangeText={setEmail}
@@ -70,13 +70,17 @@ export default function RegisterScreen() {
           secureTextEntry
         />
 
-        <View className="mt-auto mb-5">
-          <Button
-            title="Sign up"
-            variant="primary"
-            onPress={handleRegister}
-            style={{ borderRadius: 30 }}
-          />
+        <View className="mb-5 mt-auto">
+          {isLoading ? (
+            <ActivityIndicator size="large" color="#00BA7C" />
+          ) : (
+            <Button
+              title="Sign up"
+              variant="primary"
+              onPress={handleRegister}
+              style={{ borderRadius: 30 }}
+            />
+          )}
         </View>
       </View>
     </ScreenWrapper>
